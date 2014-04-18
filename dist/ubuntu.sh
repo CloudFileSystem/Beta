@@ -34,6 +34,7 @@ source ./bin/activate
 #
 pip install fuse-python
 pip install fusepy
+pip install sqlalchemy
 
 # vim: set nu ts=2 autoindent : #
 
