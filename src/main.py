@@ -7,10 +7,14 @@ from sys import argv, exit
 from threading import Lock
 from fuse import FUSE, FuseOSError, Operations, LoggingMixIn
 
+from filelog import getMySQLSession
+
 class Loopback(LoggingMixIn, Operations):
 	def __init__(self):
 		self.root = realpath('/home/naoya.d')
 		self.rwlock = Lock()
+
+		self.session = getMySQLSession('root', 'localhost', '', 'FILELOG')
 
 	def __call__(self, op, path, *args):
 		return super(Loopback, self).__call__(op, self.root + path, *args)
