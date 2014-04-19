@@ -20,6 +20,7 @@ class Loopback(LoggingMixIn, Operations):
 	def access(self, path, mode):
 		print "ACCESS (path=%s, mode=%s)" %(path, mode)
 		if not os.access(path, mode):
+			print "RAISE EACCESS"
 			raise FuseOSError(EACCES)
 
 	def chmod(self, path, mode):
@@ -78,6 +79,10 @@ class Loopback(LoggingMixIn, Operations):
 		print "LINK (target=%s, source=%s)" %(target, source)
 		return os.link(source, target)
 
+	def unlink(self, path):
+		print "UNLINK (path=%s)" %(path)
+		return os.unlink(path)
+
 	def utimens(self, path, times=None):
 		print "UTIMENS (path=%s, times=%s)" %(path, times)
 		return os.utime(path, times)
@@ -100,7 +105,8 @@ class Loopback(LoggingMixIn, Operations):
 			return os.read(fh, size)
 
 	def write(self, path, data, offset, fh):
-		print "WRITE (path=%s, data=%s, offset=%s, fh=%s)" %(path, data, offset, fh)
+		#print "WRITE (path=%s, data=%s, offset=%s, fh=%s)" %(path, data, offset, fh)
+		print "WRITE (path=%s, offset=%s, fh=%s)" %(path, offset, fh)
 		with self.rwlock:
 			os.lseek(fh, offset, 0)
 			return os.write(fh, data)
