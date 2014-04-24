@@ -10,8 +10,8 @@ from fuse import FUSE, FuseOSError, Operations, LoggingMixIn
 from filelog import getMySQLSession
 
 class Loopback(LoggingMixIn, Operations):
-	def __init__(self):
-		self.root = realpath('/home/naoya.d')
+	def __init__(self, root):
+		self.root = root
 		self.rwlock = Lock()
 
 		self.session = getMySQLSession('root', 'localhost', '', 'FILELOG')
@@ -137,6 +137,5 @@ class Loopback(LoggingMixIn, Operations):
 
 if __name__ == '__main__':
 	mntpoint = os.path.abspath('%s/../mnt' %(os.path.dirname(os.path.abspath(__file__))))
-	print "I will mount %s" %(mntpoint)
-	FUSE(Loopback(), '/home/naoya', foreground=True, nonempty=True)
+	FUSE(Loopback(mntpoint), '/home/naoya', foreground=True, nonempty=True)
 
