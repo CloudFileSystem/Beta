@@ -27,17 +27,6 @@ easy_install pip
 #
 # install virtualenv
 #
-sudo pip install virtualenv
-
-#
-# activate virtualenv
-#
-virtualenv .
-source ./bin/activate
-
-#
-# install virtualenv
-#
 pip install fuse-python
 pip install fusepy
 pip install sqlalchemy
