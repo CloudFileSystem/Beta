@@ -22,15 +22,15 @@ sudo apt-get -y install libmysqlclient-dev
 #
 # install pip
 #
-easy_install pip
+sudo easy_install pip
 
 #
 # install virtualenv
 #
-pip install fuse-python
-pip install fusepy
-pip install sqlalchemy
-pip install MySQL-python
+sudo pip install fuse-python
+sudo pip install fusepy
+sudo pip install sqlalchemy
+sudo pip install MySQL-python
 
 # vim: set nu ts=2 autoindent : #
 
