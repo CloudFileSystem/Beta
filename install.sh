@@ -44,10 +44,10 @@ elif [ `uname` = "Linux" ]; then
 	fi
 fi
 
-# mntディレクトリの作成
-if [ ! -d "mnt" ]
+# confirm root directory
+if [ ! -d "root" ]
 then
-	# add mkdir mnt
-	mkdir "mnt"
+	# add mkdir root
+	mkdir "root"
 fi
 
