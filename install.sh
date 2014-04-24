@@ -45,9 +45,9 @@ elif [ `uname` = "Linux" ]; then
 fi
 
 # mntディレクトリの作成
-if [ -e mnt ]
+if [ ! -d "mnt" ]
 then
 	# add mkdir mnt
-	mkdir mnt
+	mkdir "mnt"
 fi
 
