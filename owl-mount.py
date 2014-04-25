@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys, os, time
+from fuse import FUSE, FuseOSError, Operations, LoggingMixIn
+from owl import Loopback
 
 # get program name
 program_name = sys.argv[0]
@@ -30,11 +32,10 @@ def main():
 
 	# all seems ok - run our fuse fs as a child
 	if os.fork() == 0:
-		pass
+		FUSE(Loopback(mountpoint), '/home/naoya/Desktop/Beta/root', foreground=True, nonempty=True)
 	else:
 		pass
 
 if __name__ == '__main__':
-	print sys.argv
 	main()
 

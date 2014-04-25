@@ -11,7 +11,7 @@ Base = declarative_base()
 Base.metadata = MetaData()
 
 class FileLog(Base):
-	__tablename__ = 'terminal'
+	__tablename__ = 'filelog'
 
 	id		= Column(Integer, primary_key=True)
 	operation	= Column(Text)
@@ -31,6 +31,7 @@ def getMySQLSession(username, hostname, password, database):
 	engine = create_engine(uri)
 	MySQLSession = sessionmaker(bind=engine)
 
-	session = MySQLSession()
-	return session
+	FileLog.metadata.create_all(engine)
+
+	return MySQLSession
 
