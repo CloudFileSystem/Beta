@@ -49,5 +49,6 @@ if [ ! -d "root" ]
 then
 	# add mkdir root
 	mkdir "root"
+	mkdir "mnt"
 fi
 

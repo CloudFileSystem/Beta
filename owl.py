@@ -164,6 +164,7 @@ class Loopback(LoggingMixIn, Operations):
 		session.commit()
 
 if __name__ == '__main__':
-	mntpoint = os.path.abspath('%s/mnt' %(os.path.dirname(os.path.abspath(__file__))))
-	FUSE(Loopback(mntpoint), '/home/naoya/Desktop/Beta/root', foreground=True, nonempty=True)
+	mntpoint  = os.path.abspath('%s/mnt' %(os.path.dirname(os.path.abspath(__file__))))
+	rootpoint = os.path.abspath('%s/root' %(os.path.dirname(os.path.abspath(__file__))))
+	FUSE(Loopback(mntpoint), rootpoint, foreground=True, nonempty=True)
 
