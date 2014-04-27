@@ -32,7 +32,8 @@ def main():
 
 	# all seems ok - run our fuse fs as a child
 	if os.fork() == 0:
-		FUSE(Loopback(mountpoint), '/home/naoya/Desktop/Beta/root', foreground=True, nonempty=True)
+		mntpoint = os.path.abspath('%s/root' %(os.path.dirname(os.path.abspath(__file__))))
+		FUSE(Loopback(mntpoint), mountpoint, foreground=True, nonempty=True, allow_other=True)
 	else:
 		pass
 
